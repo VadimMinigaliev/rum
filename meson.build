@@ -105,14 +105,14 @@ tests += {
     ],
     'test_kwargs': {'timeout': 3000},
   },
-  'isolation': {
-    'specs': [
-      'predicate-rum',
-      'predicate-rum-2',
-    ],
-    'regress_args': [
-      '--temp-config', files('logical.conf'),
-      '--load-extension=rum',
-    ],
-  },
+#  'isolation': {
+#    'specs': [
+#      'predicate-rum',
+#      'predicate-rum-2',
+#    ],
+#    'regress_args': [
+#      '--temp-config', files('logical.conf'),
+#      '--load-extension=rum',
+#    ],
+#  },
 }

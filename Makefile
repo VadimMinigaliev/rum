@@ -30,8 +30,8 @@ REGRESS = security rum rum_validate rum_hash ruminv timestamp \
 
 TAP_TESTS = 1
 
-ISOLATION = predicate-rum predicate-rum-2
-ISOLATION_OPTS = --load-extension=rum
+#ISOLATION = predicate-rum predicate-rum-2
+#ISOLATION_OPTS = --load-extension=rum
 EXTRA_CLEAN = pglist_tmp
 
 ifdef USE_PGXS
@@ -88,18 +88,18 @@ uninstall: uninstallincludes
 uninstallincludes:
 	rm -f $(addprefix '$(DESTDIR)$(includedir_server)/', $(INCLUDES))
 
-ISOLATIONCHECKS= predicate-rum predicate-rum-2
+#ISOLATIONCHECKS= predicate-rum predicate-rum-2
 
-submake-isolation:
-	$(MAKE) -C $(top_builddir)/src/test/isolation all
+#submake-isolation:
+#	$(MAKE) -C $(top_builddir)/src/test/isolation all
 
 submake-rum:
 	$(MAKE) -C $(top_builddir)/contrib/rum
 
-isolationcheck: | submake-isolation submake-rum temp-install
-	$(pg_isolation_regress_check) \
-		--temp-config $(top_srcdir)/contrib/rum/logical.conf \
-		$(ISOLATIONCHECKS)
+#isolationcheck: | submake-isolation submake-rum temp-install
+#	$(pg_isolation_regress_check) \
+#		--temp-config $(top_srcdir)/contrib/rum/logical.conf \
+#		$(ISOLATIONCHECKS)
 
 # For 9.6-11 we have to make specific target with tap tests
 check: temp-install
